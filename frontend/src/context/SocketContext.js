@@ -7,10 +7,7 @@ export const SocketProvider = ({ children }) => {
   const socketRef = useRef(null);
 
   useEffect(() => {
-    socketRef.current = io(
-      process.env.REACT_APP_API_URL || 'http://localhost:5000',
-      { transports: ['websocket'] }
-    );
+    socketRef.current = io('http://localhost:5000', { transports: ['websocket'] });
     return () => socketRef.current?.disconnect();
   }, []);
 
